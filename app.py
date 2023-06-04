@@ -1,5 +1,4 @@
 import ee
-
 import numpy as np
 import pandas as pd
 from flask import Flask, request, render_template
@@ -7,7 +6,7 @@ from sklearn import preprocessing
 import pickle
 
 # Initialize an app
-app = Flask(_name_)
+app = Flask(__name__)
 
 # Load the serialized model
 with open('model.pkl', 'rb') as f:
@@ -158,5 +157,5 @@ def predict():
         return render_template('index.html', prediction_text='The area at {}, {} location is {}'.format(longitude, latitude, text))
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     app.run(debug=True)
